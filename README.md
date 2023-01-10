@@ -62,3 +62,38 @@ After registration, our custom GridWorldEnv environment can be created with `env
 from src.envs.grid_world import GridWorldEnv
 ```
 For more details refer to the [tutorial documentation](https://gymnasium.farama.org/tutorials/environment_creation/).
+
+## Creating a Package
+
+The last step is to structure our code as a Python package. This involves configuring `setup.py`. A minimal example of how to do so is as follows:
+
+```python
+from setuptools import setup
+
+setup(
+    name="gridworld_pkg",
+    version="0.0.1",
+    install_requires=["gymnasium==0.26.0", "pygame==2.1.0"],
+)
+```
+
+## Creating Environment Instances
+
+After you have installed your package locally with pip install -e gym-examples, you can create an instance of the environment via:
+
+```python
+import gym_examples
+env = gymnasium.make('src/GridWorld-v0')
+```
+
+You can also pass keyword arguments of your environment’s constructor to gymnasium.make to customize the environment. In our case, we could do:
+
+```python
+env = gymnasium.make('src/GridWorld-v0', size=10)
+```
+
+Sometimes, you may find it more convenient to skip registration and call the environment’s constructor yourself. Some may find this approach more pythonic and environments that are instantiated like this are also perfectly fine (but remember to add wrappers as well!).
+
+# Using Wrappers
+
+See [here](https://gymnasium.farama.org/tutorials/environment_creation/#using-wrappers).
