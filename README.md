@@ -57,3 +57,8 @@ Apart from id and entrypoint, you may pass the following additional keyword argu
 Most of these keywords (except for max_episode_steps, order_enforce and kwargs) do not alter the behavior of environment instances but merely provide some extra information about your environment.
 
 After registration, our custom GridWorldEnv environment can be created with `env = gymnasium.make('gym_examples/GridWorld-v0')`.
+`src/envs/__init__.py` should have:
+```python
+from src.envs.grid_world import GridWorldEnv
+```
+For more details refer to the [tutorial documentation](https://gymnasium.farama.org/tutorials/environment_creation/).
